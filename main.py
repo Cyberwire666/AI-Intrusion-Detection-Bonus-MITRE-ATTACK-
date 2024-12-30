@@ -13,6 +13,7 @@ import seaborn as sns  # For better visualization (particularly for bar plots)
 # Load the dataset containing intrusion detection data
 df = pd.read_csv('intrusion_detection_data.csv')  # Load the CSV file into a Pandas DataFrame
 # Print the first few rows of the dataset to understand its structure
+print("-------------------------------------START----------------------------------------------")
 print(f"Sample data:\n{df.head()}")  # Display the first five rows to preview the data
 
 # Shuffle the data to avoid any bias caused by ordered rows
@@ -142,8 +143,12 @@ plt.legend()  # Display the legend
 
 plt.tight_layout()  # Adjust the layout to prevent overlap
 plt.show()  # Show the plots
+print("--------------------------------------------END--------------------------------------------------")
 
-# Visualize the distribution of MITRE ATT&CK techniques
+
+
+#----------------------------------------------BONUS---------------------------------------------------------------
+""" # Visualize the distribution of MITRE ATT&CK techniques
 mitre_counts = df['mitre_attack'].value_counts()  # Count occurrences of each MITRE ATT&CK technique
 plt.figure(figsize=(12, 8))  # Set the figure size for the bar plot
 sns.barplot(x=mitre_counts.values, y=mitre_counts.index)  # Plot a bar chart of technique frequencies
@@ -151,12 +156,11 @@ plt.title("MITRE ATT&CK Technique Distribution")  # Set the plot title
 plt.xlabel("Frequency")  # Label for the x-axis
 plt.ylabel("MITRE ATT&CK Techniques")  # Label for the y-axis
 plt.show()  # Show the plot
-
-#----------------------------------------------BONUS---------------------------------------------------------------
+ """
 
 # Function to map real-time data to MITRE ATT&CK techniques
 # Define a function to map the features of the dataset to MITRE ATT&CK techniques
-def map_to_mitre(row):
+""" def map_to_mitre(row):
     if row['attack'] == 1:  # Check if the attack label is 1 (positive class for attack)
         # Check different conditions for MITRE ATT&CK tactic and technique mappings
         if row['protocol_type'] == 'udp' and row['service'] == 'ftp':
@@ -183,3 +187,4 @@ live_input = [
 # Get MITRE ATT&CK tactic and technique prediction for the new input
 mapped_tactic = map_to_mitre(live_input)
 print(f"Predicted MITRE ATT&CK Technique: {mapped_tactic}")
+ """
